@@ -2,8 +2,12 @@ local curl = require("plenary.curl")
 
 local default_url = "https://livegrep.com/api/v1/search/linux"
 
-local function search_livegrep(query, params)
-  local params = params or {}
+-- opts
+--   url
+--   proxy
+--   local_repo_only
+local function search_livegrep(query, opts)
+  local opts = opts or {}
 
   -- Wait for 2 characters to search
   if string.len(vim.trim(query)) < 2 then
@@ -15,7 +19,7 @@ local function search_livegrep(query, params)
     fold_case = "auto",
     regex = "true",
   }
-  local url = params.url or default_url
+  local url = opts.url or default_url
 
   local response = curl.get({
     url = url,
