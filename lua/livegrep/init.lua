@@ -2,6 +2,7 @@ local sorters = require("telescope.sorters")
 local pickers = require("telescope.pickers")
 local finders = require("telescope.finders")
 local conf = require("telescope.config").values
+local make_search_fn = require("livegrep.search")
 
 local M = {}
 
@@ -17,11 +18,12 @@ end
 
 M.livegrep = function(opts)
   opts = opts or {}
+
   pickers
     .new(opts, {
       prompt_title = "Livegrep",
       finder = finders.new_dynamic({
-        fn = require("livegrep.search"),
+        fn = make_search_fn(opts),
         entry_maker = entry_maker,
       }),
       sorter = sorters.highlighter_only(opts),
