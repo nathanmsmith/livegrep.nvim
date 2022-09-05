@@ -57,4 +57,5 @@ All of the options are as follows:
 - `url` (default: `"https://livegrep.com/api/v1/search/linux"`): The url of the API to search against.
 - `fold_case` (default: `"auto"`): Should the query be case-sensitive? `"true"` means case-insensitive, `"false"` means case-sensitive, `"auto"` is case-insensitive unless an uppercase character is given (similar to Vim's `smartcase`)
 - `regex` (default: `"true"`): Should the query be parsed as a regex or literally? `"true"` parses as a regex, `"false"` performs a literal string search.
+- `repo` (default: `nil`): The repository to search. Defaults to `nil` which denotes all repos.
 - `raw_curl_opts` (default: `nil`): A table of extra arguments to pass to the `curl` call to the API.
