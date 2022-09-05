@@ -45,11 +45,21 @@ local function make_search_fn(opts)
   end
 end
 
+local function entry_display(entry)
+  local value = entry.value
+  local file = value.path
+  local column_no = value.bounds[1]
+  local line_no = value.lno
+  local line = vim.trim(value.line)
+
+  return string.format("%s:%d:%d:%s", file, line_no, column_no, line)
+end
+
 -- Entry maker for picker
-local entry_maker = function(entry)
+local function entry_maker(entry)
   return {
     value = entry,
-    display = vim.trim(entry.line),
+    display = entry_display,
     ordinal = vim.trim(entry.line),
     filename = entry.path,
     lnum = entry.lno,
