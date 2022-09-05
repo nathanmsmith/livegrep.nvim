@@ -63,6 +63,7 @@ local function entry_maker(entry)
     ordinal = vim.trim(entry.line),
     filename = entry.path,
     lnum = entry.lno,
+    col = entry.bounds[1],
   }
 end
 
